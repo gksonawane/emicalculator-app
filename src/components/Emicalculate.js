@@ -9,6 +9,11 @@ const Emicalculate = () => {
     const [interest, setInterest] = useState(9)
     const [tenure, setTenure] = useState(2)
     const [selectedLoanType, setSelectedLoanType] = useState('Home Loan');
+    const [checked , setChecked] = useState({
+        name : 'years',
+        maxRange : 30,
+        value: true
+    });
     
     // converting string into floating number
     const formatedLoanAmount = parseFloat(loanAmount);
@@ -19,6 +24,27 @@ const Emicalculate = () => {
     const handleLoanTypeClick = (loanType) => {
         setSelectedLoanType(loanType);
     };
+
+    // handeling radio buttons
+    const handleRadioBtn = (tenureType) => () => {
+        if(tenureType === 'years'){
+            setChecked({
+                name: tenureType,
+                maxRange : 30 ,
+                value: true
+            });
+
+        }
+        if(tenureType === 'months'){
+            setChecked({
+                name: tenureType,
+                maxRange : 240 ,
+                value: true
+            });
+        }
+        
+      };
+        
 
     
     return (
@@ -63,15 +89,19 @@ const Emicalculate = () => {
                 <div className="range-col2">
                     <label htmlFor="tenure"  className='input-label'>Loan Tenure</label>
                     <input type="number" className='input-tenure' onChange={(e) => { setTenure(e.target.value) }} value={tenure} />
-                    <div className="radio-btn">
-                        <input type="radio" name='btn' id='year' /><label htmlFor="year">Years</label>
-                        <input type="radio" name='btn' id='month'  /><label htmlFor="month">Months</label>
+                    <div className="radio-btn-container">
+                        <input type="radio" name='btn' id='year' onClick={handleRadioBtn('years')} 
+                        className={`radio-button ${checked.name === 'years' ? 'active':''}`}/>
+                        <label htmlFor="year">Years</label>
+                        <input type="radio" name='btn' id='month' onClick={handleRadioBtn('months')}
+                        className={`radio-button ${checked.name === 'months' ? 'active':''}`}/>
+                        <label htmlFor="month">Months</label>
                     </div>
                 </div>
                 <div className="range1">
-                    <input type="range" min={2} max={50} step={2} value={tenure} onChange={(e) => { setTenure(e.target.value) }} />
+                    <input type="range" min={2} max={checked.maxRange} step={2} value={tenure} onChange={(e) => { setTenure(e.target.value) }} />
                 </div>
-                <Calculate loanAmount={formatedLoanAmount} interest={formatedInterest} tenure={tenure} />
+                <Calculate loanAmount={formatedLoanAmount} interest={formatedInterest} tenure={tenure} checked={checked}/>
 
             </div>
         </div>

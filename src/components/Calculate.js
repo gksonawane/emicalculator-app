@@ -3,19 +3,31 @@ import React, { useCallback, useEffect } from 'react';
 import GraphPie from './GraphPie';
 
 
-const Calculate = ({ loanAmount, interest, tenure }) => {
+const Calculate = ({ loanAmount, interest, tenure , checked }) => {
     const handleOutput = useCallback(() => {
 
+        // if we dont have loanamount
         if(!loanAmount){
             const emiLoan = 0 ;
-            const totalInterest =0 ;
+            const totalInterest = 0 ;
             const totalPaymentValue = 0 ;
             return {
                 emiLoan , totalInterest ,totalPaymentValue
             }
         }
+
+        //for checking the value whether its month or year
+        let totalMonths ;
+        if(checked.name === 'years'  ){
+            totalMonths = tenure * 12 ;
+        }
+        if(checked.name === 'months'){
+            totalMonths = tenure ;
+        }
+
         const monthlyInterest = interest / 100 / 12;
-        const totalPayment = tenure * 12;
+        // const totalPayment = tenure * 12;
+        const totalPayment = totalMonths;
 
         const emiLoan = (loanAmount * monthlyInterest * Math.pow(1 + monthlyInterest, totalPayment)) /
             (Math.pow(1 + monthlyInterest, totalPayment) - 1);
@@ -29,7 +41,7 @@ const Calculate = ({ loanAmount, interest, tenure }) => {
 
         return { emiLoan, totalInterest, totalPaymentValue };
 
-    }, [interest, loanAmount, tenure]);
+    }, [interest, loanAmount, tenure , checked]);
 
     useEffect(() => {
         handleOutput();
