@@ -52,6 +52,10 @@
   
 }
 
+.radio-btn-container.active:checked+label{
+  background-color: rgb(3, 21, 53);
+  color: white;
+}
 
 .radio-button.active:checked+label{
   background-color: rgb(3, 21, 53);

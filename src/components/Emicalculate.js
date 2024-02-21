@@ -89,12 +89,12 @@ const Emicalculate = () => {
                 <div className="range-col2">
                     <label htmlFor="tenure"  className='input-label'>Loan Tenure</label>
                     <input type="number" className='input-tenure' onChange={(e) => { setTenure(e.target.value) }} value={tenure} />
-                    <div className="radio-btn-container">
-                        <input type="radio" name='btn' id='year' onClick={handleRadioBtn('years')} 
-                        className={`radio-button ${checked.name === 'years' ? 'active':''}`}/>
+                    <div className="radio-btn-container" >
+                        <input type="radio" name='btn' id='year' onClick={handleRadioBtn('years')} defaultChecked={checked.name}
+                        className={`radio-button ${checked.value ? 'active':''}`}/>
                         <label htmlFor="year">Years</label>
                         <input type="radio" name='btn' id='month' onClick={handleRadioBtn('months')}
-                        className={`radio-button ${checked.name === 'months' ? 'active':''}`}/>
+                        className={`radio-button ${checked.value ? 'active':''}`}/>
                         <label htmlFor="month">Months</label>
                     </div>
                 </div>
