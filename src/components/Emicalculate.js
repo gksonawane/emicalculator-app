@@ -9,17 +9,17 @@ const Emicalculate = () => {
     const [interest, setInterest] = useState(9)
     const [tenure, setTenure] = useState(2)
     const [selectedLoanType, setSelectedLoanType] = useState('Home Loan');
-    const [checked , setChecked] = useState({
-        name : 'years',
-        maxRange : 30,
+    const [checked, setChecked] = useState({
+        name: 'years',
+        maxRange: 30,
         value: true
     });
-    
+
     // converting string into floating number
     const formatedLoanAmount = parseFloat(loanAmount);
     const formatedInterest = parseFloat(interest);
 
-    
+
     // setting up loan type
     const handleLoanTypeClick = (loanType) => {
         setSelectedLoanType(loanType);
@@ -27,26 +27,26 @@ const Emicalculate = () => {
 
     // handeling radio buttons
     const handleRadioBtn = (tenureType) => () => {
-        if(tenureType === 'years'){
+        if (tenureType === 'years') {
             setChecked({
                 name: tenureType,
-                maxRange : 30 ,
+                maxRange: 30,
                 value: true
             });
 
         }
-        if(tenureType === 'months'){
+        if (tenureType === 'months') {
             setChecked({
                 name: tenureType,
-                maxRange : 240 ,
+                maxRange: 240,
                 value: true
             });
         }
-        
-      };
-        
 
-    
+    };
+
+
+
     return (
         <div className='container'>
             <div className="btns">
@@ -87,21 +87,25 @@ const Emicalculate = () => {
                     <input type="range" min={5} max={20} value={interest} onChange={(e) => { setInterest(e.target.value) }} />
                 </div>
                 <div className="range-col2">
-                    <label htmlFor="tenure"  className='input-label'>Loan Tenure</label>
-                    <input type="number" className='input-tenure' onChange={(e) => { setTenure(e.target.value) }} value={tenure} />
+                    <div className="input-container">
+                        <label htmlFor="tenure" className='input-label'>Loan Tenure</label>
+                        
+                    </div>
+
                     <div className="radio-btn-container" >
+                    <input type="number" className='input-tenure' onChange={(e) => { setTenure(e.target.value) }} value={tenure} />
                         <input type="radio" name='btn' id='year' onClick={handleRadioBtn('years')} defaultChecked={checked.name}
-                        className={`radio-button ${checked.value ? 'active':''}`}/>
+                            className={`radio-button ${checked.value ? 'active' : ''}`} />
                         <label htmlFor="year">Years</label>
                         <input type="radio" name='btn' id='month' onClick={handleRadioBtn('months')}
-                        className={`radio-button ${checked.value ? 'active':''}`}/>
+                            className={`radio-button ${checked.value ? 'active' : ''}`} />
                         <label htmlFor="month">Months</label>
                     </div>
                 </div>
                 <div className="range1">
                     <input type="range" min={2} max={checked.maxRange} step={2} value={tenure} onChange={(e) => { setTenure(e.target.value) }} />
                 </div>
-                <Calculate loanAmount={formatedLoanAmount} interest={formatedInterest} tenure={tenure} checked={checked}/>
+                <Calculate loanAmount={formatedLoanAmount} interest={formatedInterest} tenure={tenure} checked={checked} />
 
             </div>
         </div>

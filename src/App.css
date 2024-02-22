@@ -1,104 +1,74 @@
-.container{
-  height: 100%;
-  /* align-items: center; */
-  /* display: flex; */
+.container {
+  display: flex;
   flex-direction: column;
   border: 2px solid black;
-  width: auto;
-  margin: 20rem;
-  margin-top: 5rem;
+   width: auto;
   padding: 5px;
+  margin: auto;
+  height: auto;
+  width: fit-content;
 }
 
-.content{
+.content {
   border: 2px solid aqua;
-  margin: 5px;
-  padding: 5px;
-  margin-left: 0;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin: auto;
+  padding: 1rem;
+  
 }
 
+.btns{
+  display: flex;
+  width: auto;
+}
 
-
-.range-col{
+.range-col {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 3px;
 }
 
-.input-label{
-  font-size: 23px;
+.input-label {
+  font-size: 22px;
   font-family: sans-serif;
 }
 
-.range-col2{
-  display: flex;
-  margin: 10px 3px;
-}
-.input-tenure{
-  width: 31%;
-  height: 25px;
-  margin-left: 320px;
-}
 
-.radio-btn-container{
-  display: flex;
-}
-
-.radio-btn-container input[type="radio"]{
-  display: none;
-  
-}
-
-.radio-btn-container.active:checked+label{
-  background-color: rgb(3, 21, 53);
-  color: white;
-}
-
-.radio-button.active:checked+label{
-  background-color: rgb(3, 21, 53);
-  color: white; 
-}
-
-.radio-btn-container label{
-  background-color: rgb(160, 208, 228);
-  padding: 3.7px 5px;
-  box-shadow: 0px 0px 2px 1px rgb(78, 108, 240);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.input-amount{
-  width: 45%;
+.input-amount {
+  width: 50%;
   height: 25px;
 }
 
-.range1,input{
+.range1,
+input {
   width: 100%;
-  
 }
 
-.payable{
-  /* border: 2px solid red; */
+.payable {
   padding: 5px;
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
 
-.emi{
+.emi {
   border: 2px solid black;
-  width: 25rem;
+  width: auto;
   text-align: center;
+  padding: 1rem;
 }
 
-.head{
+.para{
+  color: rgb(19, 1, 19);
+  font-weight: 600;
+}
+
+.head {
   margin-bottom: -53px;
   margin-top: 0px;
   margin-left: 58px;
 }
+
 .loan-type-button {
   background-color: #f1f1f1;
   border: none;
@@ -116,6 +86,8 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
+  width: 100%; 
+  margin-bottom: 10px; 
 }
 
 .loan-type-button:focus {
@@ -134,3 +106,71 @@
   color: #333;
 }
 
+
+.range-col2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.input-tenure {
+  flex: 1; 
+  height: 25px;
+  margin-left: 0px;
+  width: 11rem;
+}
+
+.radio-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.radio-btn-container input[type="radio"] {
+  display: none;
+}
+
+.radio-btn-container.active:checked + label {
+  background-color: rgb(3, 21, 53);
+  color: white;
+}
+
+.radio-button.active:checked + label {
+  background-color: rgb(3, 21, 53);
+  color: white;
+}
+
+.radio-btn-container label {
+  background-color: rgb(160, 208, 228);
+  padding: 3.7px 5px;
+  box-shadow: 0px 0px 2px 1px rgb(78, 108, 240);
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-left: 5px; 
+}
+
+
+
+/* Media Query for Small Devices */
+@media only screen and (max-width: 600px) {
+  .range-col,
+  .range-col2 {
+    flex-direction: column;
+  }
+
+  .loan-type-button {
+    padding: 10px;
+  }
+
+  .payable {
+    flex-direction: column; 
+  }
+  .btns{
+    flex-wrap: wrap;
+  }
+
+  .graph{
+    margin-top: 1rem;
+  }
+}

@@ -69,22 +69,25 @@ const Calculate = ({ loanAmount, interest, tenure , checked }) => {
             <div className="payable">
                 <div className="output-container">
                     <div className="emi">
-                        <p>Loan Emi</p>
+                        <p className='para'>Loan Emi</p>
                         <h2>{formatedEmi}</h2>
                     </div>
                     <div className="emi">
-                        <p>Total Interest Payable</p>
+                        <p className='para'>Total Interest Payable</p>
                         <h2>{formatedInterest}</h2>
 
                     </div>
                     <div className="emi">
-                        <p>Total Payment</p>
-                        <span>(Principal + Interest)</span>
+                        <p className='para'>Total Payment</p>
+                        <span className='para'>(Principal + Interest)</span>
                         <h2>{formatedTotalAmount}</h2>
                     </div>
 
                 </div>
-                <GraphPie principal={principal} totalInterest={totalInterest}/>
+                <div className="graph">
+                 <GraphPie principal={principal} totalInterest={totalInterest}/>
+                </div>
+                
 
                 {/* <Piechart principal={principal} totalInterest={totalInterest} /> */}
             </div>
